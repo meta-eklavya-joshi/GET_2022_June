@@ -1,8 +1,15 @@
-
+package Assignment1;
 public class JobScheduler {
 	
+	/**
+	 * This method return the completion time for each process
+	 * @param jobs Array in which jobs are stored
+	 * @return Completion time for each jobs
+	 */
 	public int[] completionTime(int[][] jobs)
 	{
+		if (jobs.length == 0)
+			throw new AssertionError("Jobs array can't be empty");
 		int time = jobs[0][0];
 		int[] completiontime = new int[jobs.length];
 		for(int i=0; i < jobs.length; i++)
@@ -20,31 +27,15 @@ public class JobScheduler {
 		return completiontime;
 	}
 	
-	
-	
-	public int[] waitingTime(int[][] jobs)
-	{
-		int time = jobs[0][0];
-		int[] waitingtime = new int[jobs.length];
-		for(int i=0; i < jobs.length; i++)
-		{
-			if (time > jobs[i][0])
-			{
-				waitingtime[i] = time - jobs[i][0];
-			}
-			else
-			{
-				time = jobs[i][0] + jobs[i][1];
-			}
-		}
-		return waitingtime;
-	}
-	
-	
-	
-	
+	/**
+	 * This method return the turn around time for each process
+	 * @param jobs Array in which jobs are stored
+	 * @return Turn around time for each jobs
+	 */
 	public int[] turnAroundTime(int[][] jobs)
 	{
+		if (jobs.length == 0)
+			throw new AssertionError("Jobs array can't be empty");
 		int[] completiontime = completionTime(jobs);
 		int[] waitingtime = new int[jobs.length];
 		for(int i=0; i < jobs.length; i++)
@@ -54,32 +45,34 @@ public class JobScheduler {
 		return waitingtime;
 	}
 	
-	public int[] burstTime(int[][] jobs)
+	/**
+	 * This method return the waiting time for each array
+	 * @param jobs Array in which jobs are stored
+	 * @return Waiting time for each jobs
+	 */
+	public int[] waitingTime(int[][] jobs)
 	{
-		int[] bursttime = new int[jobs.length];
-//		int time = 0;
-//		for(int i=0; i<jobs.length; i++)
-//		{
-//			if(time <= jobs[i][0])
-//			{
-//				bursttime[i] = jobs[i][1];
-//			}
-//			else
-//			{
-//				bursttime[i] = time - jobs[i][0] + jobs[i][1];
-//			}
-//		}
-		int[] waitingtime = waitingTime(jobs);
-		int[] turnAroundtime = turnAroundTime(jobs);
-		for(int i=0; i<jobs.length; i++)
+		int[] turnaroundtime = turnAroundTime(jobs);
+		if (jobs.length == 0)
+			throw new AssertionError("Jobs array can't be empty");
+		int waitingTime []= new int[jobs.length];	//array which store waiting time
+		for(int i=0;i<jobs.length;i++)
 		{
-			bursttime[i] = turnAroundtime[i] - waitingtime[i];
+			waitingTime [i] = turnaroundtime[i] - jobs[i][1];
 		}
-		return bursttime;
+		return waitingTime;
 	}
 	
+	
+	/**
+	 * This method returns average waiting time of the process
+	 * @param jobs Array in which jobs are stored
+	 * @return Average waiting time for the jobs
+	 */
 	public double averageWaitingTime(int[][] jobs)
-	{
+	{ 
+		if (jobs.length == 0)
+			throw new AssertionError("Jobs array can't be empty");
 		int[] waitingtime = waitingTime(jobs);
 		int totalWaitingTime = 0;
 		for(var time : waitingtime)
@@ -90,9 +83,15 @@ public class JobScheduler {
 	}
 	
 	
-	
+	/**
+	 * This method returns the maximum waiting time by the process
+	 * @param Jobs Array in which jobs are stored
+	 * @return Maximum waiting time for the jobs 
+	 */
 	public int maxWaitingTime(int[][] jobs)
 	{
+		if (jobs.length == 0)
+			throw new AssertionError("Jobs array can't be empty");
 		int maxWaitingtime = 0;
 		int[] waitingtime = waitingTime(jobs);
 		for(int i=0; i < jobs.length; i++)
@@ -105,7 +104,10 @@ public class JobScheduler {
 		return maxWaitingtime;
 	}
 	
-	
+	/**
+	 * This method displays the time for each process
+	 * @param time of the jobs
+	 */
 	public void displayTime(int[] time)
 	{
 		for(var i : time)
@@ -113,21 +115,4 @@ public class JobScheduler {
 			System.out.println(i);
 		}
 	}
-
-	public static void main(String[] args) {
-		int [][] jobs = {{0,10},{6,20},{60,10},{110,5}};
-		JobScheduler obj = new JobScheduler();
-		int[] completiontime = obj.completionTime(jobs);
-		System.out.println("Completion Time for Each Process: ");
-		obj.displayTime(completiontime);
-		int[] turnAroundtime = obj.turnAroundTime(jobs);
-		System.out.println("Turn Around Time for Each Process: ");
-		obj.displayTime(turnAroundtime);
-		int[] waitingtime = obj.waitingTime(jobs);
-		System.out.println("Waiting Time for Each Process: ");
-		obj.displayTime(waitingtime);
-		System.out.println("Average Waiting Time: " + obj.averageWaitingTime(jobs));
-		System.out.println("Maximum Waiting Time: " + obj.maxWaitingTime(jobs));
-	}
-
 }
