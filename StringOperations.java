@@ -21,6 +21,8 @@ public class StringOperation {
      */
     int compare(char[]text1, char[] text2)
     { 
+    	if (text1.length == 0 || text2.length == 0)
+    		throw new AssertionError("String can't be empty");
         if(text1.length == text2.length){
             for (int i = 0; i < text2.length; i++) {
                 if(text1[i] != text2[i]){
@@ -41,6 +43,8 @@ public class StringOperation {
      */
     char[] reverse()
     {
+    	if (text.length == 0)
+    		throw new AssertionError("String can't be empty");
         char[] rev = new char[30];
         for (int i = 0; i < text.length; i++) {
             rev[i] = text[text.length-i-1];
@@ -55,6 +59,8 @@ public class StringOperation {
      */
     char[] changeCase()
     {
+    	if (text.length == 0)
+    		throw new AssertionError("String can't be empty");
         char[] changed = new char[30];
         changed = text;
         for (int i = 0; i < text.length; i++) {
@@ -78,6 +84,8 @@ public class StringOperation {
      */
     char[] largestLastWord()
     {
+    	if (text.length == 0)
+    		throw new AssertionError("String can't be empty");
         char[] largestWord= new char[30];
         int initalPos=0, maxLen=0,tempLen=0,tempPos=0; 
         for (int i = 0; i < text.length; i++) {
