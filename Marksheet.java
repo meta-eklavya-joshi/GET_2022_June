@@ -1,18 +1,30 @@
-import java.util.Scanner;
-
+package Assignment2;
 public class Marksheet {
 
-	
+	/**
+	 * 
+	 * @param marks Array of marks of the students in the class
+	 * @return Average marks of the class
+	 */
 	public double average(int[] marks)
 	{
+		if (marks.length == 0)
+			throw new AssertionError("Marks array can't be empty");
 		int sumOfMarks = 0;
 		for(int mark : marks)
 			sumOfMarks += mark;
 		return (double)sumOfMarks/marks.length;
 	}
 	
+	/**
+	 * 
+	 * @param marks Array of marks of the students in the class
+	 * @return Maximum marks obtained by the student in  the class
+	 */
 	public int maximum(int[] marks)
 	{
+		if (marks.length == 0)
+			throw new AssertionError("Marks array can't be empty");
 		int maximumMarks = 0;
 		for(int mark : marks)
 		{
@@ -24,9 +36,15 @@ public class Marksheet {
 		return maximumMarks;
 	}
 	
-	
+	/**
+	 * 
+	 * @param marks Array of marks of the students in the class
+	 * @return Minimum marks obtained by the student in  the class
+	 */
 	public int minimum(int[] marks)
 	{
+		if (marks.length == 0)
+			throw new AssertionError("Marks array can't be empty");
 		int minimumMarks = marks[0];
 		for(int mark : marks)
 		{
@@ -38,9 +56,15 @@ public class Marksheet {
 		return minimumMarks;
 	}
 	
-	
-	public double percentageOfStudentPassed(int[] marks)
-	{
+	/**
+	 * 
+	 * @param marks Array of marks of the students in the class
+	 * @return Percentage of the students who secured marks  >= 40
+	 */
+	public double percentageOfStudentPassed(int[] marks)  
+	{ 
+		if (marks.length == 0)
+			throw new AssertionError("Marks array can't be empty");
 		int passedStudents = 0;
 		for(int mark : marks)
 		{
@@ -51,24 +75,4 @@ public class Marksheet {
 		}
 		return ((double)passedStudents/marks.length) * 100;
 	}
-	
-	
-	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("Enter number of students:");
-		int n = scanner.nextInt();
-		int[] studentsMarks = new int[n];
-		System.out.println("Enter marks of Students:");
-		for(int i=0; i<n; i++)
-		{
-			studentsMarks[i] = scanner.nextInt();
-		}
-		Marksheet obj = new Marksheet();
-		
-		System.out.println(String.format("%.2f",obj.average(studentsMarks)));
-		System.out.println(obj.maximum(studentsMarks));
-		System.out.println(obj.minimum(studentsMarks));
-		System.out.println(String.format("%.2f",obj.percentageOfStudentPassed(studentsMarks)));
-	}
-
 }
