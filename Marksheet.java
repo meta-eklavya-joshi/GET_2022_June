@@ -2,32 +2,38 @@ package Assignment2;
 public class Marksheet {
 
 	/**
-	 * 
-	 * @param marks Array of marks of the students in the class
-	 * @return Average marks of the class
+	 * This method return the average marks of the class
+	 * @param marks : integer array of marks of the students in the class
+	 * @return double value average marks of the class
 	 */
-	public double average(int[] marks)
+	public double averageMarksOfTheClass(int[] marks)
 	{
 		if (marks.length == 0)
 			throw new AssertionError("Marks array can't be empty");
 		int sumOfMarks = 0;
 		for(int mark : marks)
+		{
+			if(mark < 0 || mark > 100)
+				throw new AssertionError("Marks are out of range 0 - 100");
 			sumOfMarks += mark;
+		}
 		return (double)sumOfMarks/marks.length;
 	}
 	
 	/**
-	 * 
-	 * @param marks Array of marks of the students in the class
-	 * @return Maximum marks obtained by the student in  the class
+	 * This method return the maximum marks of the class
+	 * @param marks : integer array of marks of the students in the class
+	 * @return integer value maximum marks obtained by the student in  the class
 	 */
-	public int maximum(int[] marks)
+	public int maximumMarksOfTheClass(int[] marks)
 	{
 		if (marks.length == 0)
 			throw new AssertionError("Marks array can't be empty");
 		int maximumMarks = 0;
 		for(int mark : marks)
 		{
+			if(mark < 0 || mark > 100)
+				throw new AssertionError("Marks are out of range 0 - 100");
 			if (mark > maximumMarks)
 			{
 				maximumMarks = mark;
@@ -37,17 +43,19 @@ public class Marksheet {
 	}
 	
 	/**
-	 * 
-	 * @param marks Array of marks of the students in the class
-	 * @return Minimum marks obtained by the student in  the class
+	 * This method returns the minimum marks of the class
+	 * @param marks : integer array of marks of the students in the class
+	 * @return integer value minimum marks obtained by the student in  the class
 	 */
-	public int minimum(int[] marks)
+	public int minimumMarksOfTheClass(int[] marks)
 	{
 		if (marks.length == 0)
 			throw new AssertionError("Marks array can't be empty");
 		int minimumMarks = marks[0];
 		for(int mark : marks)
 		{
+			if(mark < 0 || mark > 100)
+				throw new AssertionError("Marks are out of range 0 - 100");
 			if (mark < minimumMarks)
 			{
 				minimumMarks = mark;
@@ -57,17 +65,19 @@ public class Marksheet {
 	}
 	
 	/**
-	 * 
+	 * This method returns the percentage of students that passed
 	 * @param marks Array of marks of the students in the class
 	 * @return Percentage of the students who secured marks  >= 40
 	 */
-	public double percentageOfStudentPassed(int[] marks)  
+	public double percentageOfStudentPassedInTheClass(int[] marks)  
 	{ 
 		if (marks.length == 0)
 			throw new AssertionError("Marks array can't be empty");
 		int passedStudents = 0;
 		for(int mark : marks)
 		{
+			if(mark < 0 || mark > 100)
+				throw new AssertionError("Marks are out of range 0 - 100");
 			if(mark >= 40)
 			{
 				passedStudents += 1;
