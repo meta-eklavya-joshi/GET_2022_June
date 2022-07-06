@@ -151,7 +151,7 @@ public class BaseCalc {
 	 */
 	public boolean compareTwoNumbersInAnyBaseForLessThan(String baseNumber1, String baseNumber2)
 	{                                                           
-		if(baseNumber2.length() > baseNumber2.length() || (baseNumber1.length() == baseNumber2.length() && baseNumber1.compareTo(baseNumber2) == 1))
+		if(baseNumber1.length() > baseNumber2.length() || (baseNumber1.length() == baseNumber2.length() && baseNumber1.compareTo(baseNumber2) == 1))
 		{
 			return false;
 		}
