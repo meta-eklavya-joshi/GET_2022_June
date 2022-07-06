@@ -2,10 +2,10 @@ package Assignment2;
 public class Area {
 
 	/**
-	 * 
-	 * @param width Width of the triangle for finding area
-	 * @param height Height of the triangle for finding area
-	 * @return Area of the triangle
+	 * This method return the area of the triangle
+	 * @param width : double value width of the triangle for finding area
+	 * @param height double value height of the triangle for finding area
+	 * @return double value area of the triangle
 	 */
 	public double areaOfTriangle(double width, double height)
 	{
@@ -13,10 +13,10 @@ public class Area {
 	}
 	
 	/**
-	 * 
-	 * @param width Width of the rectangle for finding area
-	 * @param height Height of the rectangle for finding area
-	 * @return Area of the rectangle
+	 * This method return the area of the rectangle
+	 * @param width : double value width of the rectangle for finding area
+	 * @param height double value height of the rectangle for finding area
+	 * @return double value area of the rectangle
 	 */
 	public double areaOfRectangle(double width, double height)
 	{
@@ -25,9 +25,9 @@ public class Area {
 	
 	
 	/**
-	 * 
-	 * @param width Width of the square for finding area
-	 * @return Area of the square
+	 * This method return the area of the square
+	 * @param width : double value width of the square for finding area
+	 * @return double value area of the square
 	 */
 	public double areaOfSquare(double width)  
 	{
@@ -36,9 +36,9 @@ public class Area {
 	
 	
 	/**
-	 * 
-	 * @param width Width of the circle for finding area
-	 * @return Area of the circle
+	 * This method return the area of the circle
+	 * @param width : double value width of the circle for finding area
+	 * @return double value area of the circle
 	 */
 	public double areaOfCircle(double radius)  
 	{
