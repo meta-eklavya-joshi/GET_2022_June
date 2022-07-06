@@ -3,10 +3,10 @@ public class JobScheduler {
 	
 	/**
 	 * This method return the completion time for each process
-	 * @param jobs Array in which jobs are stored
-	 * @return Completion time for each jobs
+	 * @param jobs : integer array in which jobs are stored
+	 * @return integer array of the completion time for each jobs
 	 */
-	public int[] completionTime(int[][] jobs)
+	public int[] completionTimeOfEachJob(int[][] jobs)
 	{
 		if (jobs.length == 0)
 			throw new AssertionError("Jobs array can't be empty");
@@ -14,7 +14,7 @@ public class JobScheduler {
 		int[] completiontime = new int[jobs.length];
 		for(int i=0; i < jobs.length; i++)
 		{
-			if(time == jobs[i][0] || time > jobs[i][0])
+			if(time >= jobs[i][0])
 			{
 				completiontime[i] = time + jobs[i][1];
 			}
@@ -29,14 +29,14 @@ public class JobScheduler {
 	
 	/**
 	 * This method return the turn around time for each process
-	 * @param jobs Array in which jobs are stored
-	 * @return Turn around time for each jobs
+	 * @param jobs : integer array in which jobs are stored
+	 * @return integer array of the turn around time for each jobs
 	 */
-	public int[] turnAroundTime(int[][] jobs)
+	public int[] turnAroundTimeOfEachJob(int[][] jobs)
 	{
 		if (jobs.length == 0)
 			throw new AssertionError("Jobs array can't be empty");
-		int[] completiontime = completionTime(jobs);
+		int[] completiontime = completionTimeOfEachJob(jobs);
 		int[] waitingtime = new int[jobs.length];
 		for(int i=0; i < jobs.length; i++)
 		{
@@ -47,12 +47,12 @@ public class JobScheduler {
 	
 	/**
 	 * This method return the waiting time for each array
-	 * @param jobs Array in which jobs are stored
-	 * @return Waiting time for each jobs
+	 * @param jobs : integer array in which jobs are stored
+	 * @return integer array of the waiting time for each jobs
 	 */
-	public int[] waitingTime(int[][] jobs)
+	public int[] waitingTimeOfEachJob(int[][] jobs)
 	{
-		int[] turnaroundtime = turnAroundTime(jobs);
+		int[] turnaroundtime = turnAroundTimeOfEachJob(jobs);
 		if (jobs.length == 0)
 			throw new AssertionError("Jobs array can't be empty");
 		int waitingTime []= new int[jobs.length];	//array which store waiting time
@@ -66,14 +66,14 @@ public class JobScheduler {
 	
 	/**
 	 * This method returns average waiting time of the process
-	 * @param jobs Array in which jobs are stored
-	 * @return Average waiting time for the jobs
+	 * @param jobs : integer array Array in which jobs are stored
+	 * @return double value of the average waiting time for the jobs
 	 */
-	public double averageWaitingTime(int[][] jobs)
+	public double averageWaitingTimeOfTheJob(int[][] jobs)
 	{ 
 		if (jobs.length == 0)
 			throw new AssertionError("Jobs array can't be empty");
-		int[] waitingtime = waitingTime(jobs);
+		int[] waitingtime = waitingTimeOfEachJob(jobs);
 		int totalWaitingTime = 0;
 		for(var time : waitingtime)
 		{
@@ -85,15 +85,15 @@ public class JobScheduler {
 	
 	/**
 	 * This method returns the maximum waiting time by the process
-	 * @param Jobs Array in which jobs are stored
-	 * @return Maximum waiting time for the jobs 
+	 * @param jobs : integer array in which jobs are stored
+	 * @return integer value of the maximum waiting time for the jobs 
 	 */
-	public int maxWaitingTime(int[][] jobs)
+	public int maxWaitingTimeOfTheJob(int[][] jobs)
 	{
 		if (jobs.length == 0)
 			throw new AssertionError("Jobs array can't be empty");
 		int maxWaitingtime = 0;
-		int[] waitingtime = waitingTime(jobs);
+		int[] waitingtime = waitingTimeOfEachJob(jobs);
 		for(int i=0; i < jobs.length; i++)
 		{
 			if (maxWaitingtime < waitingtime[i])
